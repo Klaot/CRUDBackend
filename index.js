@@ -29,9 +29,9 @@ app.get('/api/get', (req, res) => {
 // Получаем стэйт из формы на фронте и отправляем его в БД.
 
 app.post('/api/insert', (req, res) => {
-    const movieName = req.body.movieName,
-          movieReview = req.body.review,
-          sql = "INSERT INTO movies_reviews (movie_name, movie_review) VALUE(?,?)"; 
+    const movieName = req.body.movieName;
+    const movieReview = req.body.review;
+    const sql = "INSERT INTO movies_reviews (movie_name, movie_review) VALUE(?,?)"; 
     db.query(sql, [movieName, movieReview], (err, result) => {
         console.log(result);
     });
@@ -40,8 +40,8 @@ app.post('/api/insert', (req, res) => {
 // Удаляем запись.
 
 app.delete('/api/delete/:movieName', (req, res) => {
-    const name = req.params.movieName,
-          sqlDelete = 'DELETE FROM movies_reviews WHERE movie_name = ?';
+    const name = req.params.movieName;
+    const sqlDelete = 'DELETE FROM movies_reviews WHERE movie_name = ?';
     db.query(sqlDelete, name, (err, result) => {
         if (err) console.log(err); 
     });
@@ -50,9 +50,9 @@ app.delete('/api/delete/:movieName', (req, res) => {
 // Изменение записи.
 
 app.put('/api/update', (req, res) => {
-    const name = req.body.movieName,
-          review = req.body.review,
-          sqlUpdate = 'UPDATE movies_reviews SET movie_review = ? WHERE movie_name = ?';
+    const name = req.body.movieName;
+    const review = req.body.review;
+    const sqlUpdate = 'UPDATE movies_reviews SET movie_review = ? WHERE movie_name = ?';
     db.query(sqlUpdate, [review, name], (err, result) => {
         if (err) console.log(err); 
     });
