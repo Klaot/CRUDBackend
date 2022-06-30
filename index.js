@@ -36,7 +36,7 @@ app.post('/api/insert', (req, res) => {
     })
 })
 
-//Удаляем запись.
+// Удаляем запись.
 app.delete('/api/delete/:movieName', (req, res) => {
     const name = req.params.movieName;
     const sqlDelete = 'DELETE FROM movies_reviews WHERE movie_name = ?';
@@ -46,11 +46,12 @@ app.delete('/api/delete/:movieName', (req, res) => {
     })
 })
 
+// Изменение записи.
+
 app.put('/api/update', (req, res) => {
     const name = req.body.movieName;
     const review = req.body.review;
     const sqlUpdate = 'UPDATE movies_reviews SET movie_review = ? WHERE movie_name = ?';
-    
     db.query(sqlUpdate, [review, name], (err, result) => {
         if (err) console.log(err); 
     })
