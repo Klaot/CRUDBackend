@@ -3,13 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-const mysql = require('mysql');
-const db = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'crud_todo'
-});
+const db = require('./config/db')
 
 app.use(cors());
 app.use(express.json());
